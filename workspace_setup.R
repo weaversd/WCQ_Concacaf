@@ -8,6 +8,7 @@ library(data.table)
 library(dplyr)
 library(formattable)
 library(tidyr)
+library(sparkline)
 
 #score file
 score_file <- "scores_2.xlsx"
@@ -51,7 +52,7 @@ subset_by_team <- function(team, df = scores) {
 }
 
 #create table
-create_table <- function() {
+create_table <- function(df = scores) {
   Team <- rep("", 8)
   GP <- rep(0, 8)
   W <- rep(0, 8)
@@ -64,7 +65,7 @@ create_table <- function() {
   counter <- 1
   
   for (team in teams) {
-    temp_team <- subset_by_team(team)
+    temp_team <- subset_by_team(team, df = df)
     temp_team_played <- temp_team[!is.na(temp_team$H_score),]
     games_played <- nrow(temp_team_played)
     temp_draws <- sum(temp_team_played$Draw)

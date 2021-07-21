@@ -55,4 +55,5 @@ simulate_n_seasons <- function(iterations = 10) {
   
 }
 
-simulate_n_seasons(100)
+simulated_df <- simulate_n_seasons(100)
+simulated_df

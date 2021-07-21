@@ -7,7 +7,7 @@ simulate_season <- function() {
   
   for (i in 1:nrow(scores_predicted)) {
     if(is.na(scores_predicted$H_score[i])) {
-      match_prob <- match_probababilities(scores_predicted$Home[i], scores_predicted$Away[i])
+      match_prob <- match_probababilities_2(scores_predicted$Home[i], scores_predicted$Away[i])
       scores_predicted$H_prob[i] <- match_prob$a_win[1]
       scores_predicted$A_prob[i] <- match_prob$b_win[1]
       scores_predicted$Draw_prob[i] <- match_prob$draw[1]
