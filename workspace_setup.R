@@ -18,6 +18,8 @@ teams <- list("Canada", "Costa Rica", "El Salvador", "Honduras",
               "Jamaica", "Mexico", "Panama", "United States")
 games_n <- 14
 
+sim_seasons_n <- 100
+
 
 #scores
 raw_scores_import <- read_excel(score_file)

@@ -133,7 +133,7 @@ highlight_df <- rbind(highlight_df1, highlight_df2,
                       highlight_df3, highlight_df4)
 
 
-ggplot(melted_magic_plot) +
+magic_plot <- ggplot(melted_magic_plot) +
   geom_point(data = highlight_df, aes(X,Y, fill = Position),
              alpha = 0.2, shape = 21, size = 30, stroke = 0, color = "white") +
   geom_point(aes(x = X, y = Y, color = value_num), size = 21, shape = 0, stroke = 2.7) +
@@ -159,3 +159,8 @@ ggplot(melted_magic_plot) +
   #geom_vline(xintercept = 3.5, color = "blue", size = 2, linetype = 3) +
   scale_fill_manual(values = c("green", "turquoise", "blue", "magenta"))
 
+
+print_final <- function(){
+  print(paste0("Predictions based on ", sim_seasons_n, " simulated seasons."), quote = F)
+  print(paste0("Predictions are based on margin of victory against an average team from The Power Rank, and using a method based on fivethirtyeight's soccer predictions."), quote = F)
+}
