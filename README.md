@@ -1,8 +1,14 @@
 # WCQ_Concacaf
 A repo to keep track of and predict world cup qualification for concacaf teams
 
+Enter the scores for each team in 'scores.xlsx' and then ensure that the correct 'xlsx' file is referenced in 'workspace_setup.R'
 
-open and run files in this order:  
+Run 'Run.R' for a summary that contains the current table with relavent statistics as well as %probabilities for a top 3 or top 4 finish for each team based on current results and predicted future performance. Also produces a 'magic number' plot (see below).
+
+Working directory must contain all files along with the scores file.
+
+
+Alternatively, for more control: open and run files in this order:  
 * workspace_setup.R
 * functions.R
 * rankings2.R
