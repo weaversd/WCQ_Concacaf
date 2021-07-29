@@ -55,6 +55,9 @@ for (j in 1:8) {
   current_table$`fourth (%)`[j] <- simulated_df[simulated_df$Team == current_team,][['fourth (%)']]
 }
 
+current_table$`top 3 (%)` <- round(current_table$`top 3 (%)`, 2)
+current_table$`fourth (%)` <- round(current_table$`fourth (%)`, 2)
+
 
 inv_positions <- 9 - positions
 sparklines <- rep(NA, 8)

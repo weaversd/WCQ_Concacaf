@@ -11,14 +11,14 @@ library(tidyr)
 library(sparkline)
 
 #score file
-score_file <- "scores_2.xlsx"
+score_file <- "scores.xlsx"
 
 #Variables
 teams <- list("Canada", "Costa Rica", "El Salvador", "Honduras",
               "Jamaica", "Mexico", "Panama", "United States")
 games_n <- 14
 
-sim_seasons_n <- 100
+sim_seasons_n <- 1000
 
 
 #scores
