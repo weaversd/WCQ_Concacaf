@@ -7,35 +7,45 @@ if (matchdays_raw%%1 != 0) {
 }
 
 matchday_result_tables <- list()
-for (i in 1:matchdays) {
-  matchday_result_tables[[i]] <- scores[1:(4*i),]
-}
 
-
-matchday_result_tables_2 <- list()
-for (i in 1:matchdays) {
-  matchday_result_tables_2[[i]] <- create_table(matchday_result_tables[[i]])
-}
-
-positions <- data.frame(matrix(ncol = 8, nrow = 14))
-colnames(positions) <- teams
-
-for (i in 1:matchdays) {
-  for (j in 1:8) {
-    team_name <- teams[[j]]
-    matchday_table <- matchday_result_tables_2[[i]]
-    positions[[team_name]][i] <- matchday_table[matchday_table$Team == team_name,][["Pos"]]
+if (matchdays == 0) {
+  current_table$Prev <- NA
+  current_table$Change <- 0
+  positions <- data.frame(matrix(ncol = 8, nrow = 14))
+  colnames(positions) <- teams
+  
+} else {
+  for (i in 1:matchdays) {
+    matchday_result_tables[[i]] <- scores[1:(4*i),]
   }
-}
-
-current_table$Prev <- NA
-previous_MD <- matchdays -1
-for (j in 1:8) {
-  current_team <- current_table$Team[j]
-  current_table$Prev[j] <- positions[[current_team]][previous_MD]
+  
+  
+  matchday_result_tables_2 <- list()
+  for (i in 1:matchdays) {
+    matchday_result_tables_2[[i]] <- create_table(matchday_result_tables[[i]])
+  }
+  
+  positions <- data.frame(matrix(ncol = 8, nrow = 14))
+  colnames(positions) <- teams
+  
+  for (i in 1:matchdays) {
+    for (j in 1:8) {
+      team_name <- teams[[j]]
+      matchday_table <- matchday_result_tables_2[[i]]
+      positions[[team_name]][i] <- matchday_table[matchday_table$Team == team_name,][["Pos"]]
+    }
+  }
+  
+  current_table$Prev <- NA
+  previous_MD <- matchdays -1
+  for (j in 1:8) {
+    current_team <- current_table$Team[j]
+    current_table$Prev[j] <- positions[[current_team]][previous_MD]
+    
+  }
+  current_table$Change <- current_table$Prev - current_table$Pos
   
 }
-current_table$Change <- current_table$Prev - current_table$Pos
 
 current_table$`top 3 (%)` <- NA
 current_table$`fourth (%)` <- NA

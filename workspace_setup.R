@@ -69,24 +69,37 @@ create_table <- function(df = scores) {
   for (team in teams) {
     temp_team <- subset_by_team(team, df = df)
     temp_team_played <- temp_team[!is.na(temp_team$H_score),]
-    games_played <- nrow(temp_team_played)
-    temp_draws <- sum(temp_team_played$Draw)
-    temp_wins <- sum(temp_team_played$Winner == team)
-    temp_losses <- sum(temp_team_played$Loser == team)
-    temp_points <- (3*temp_wins) + (temp_draws)
-    
-    temp_goals_for <- 0
-    temp_goals_against <- 0
-    for (i in 1:nrow(temp_team_played)) {
-      if (temp_team_played$Home[i] == team) {
-        temp_goals_for <- temp_goals_for + temp_team_played$H_score[i]
-        temp_goals_against <- temp_goals_against + temp_team_played$A_score[i]
-      } else {
-        temp_goals_for <- temp_goals_for + temp_team_played$A_score[i]
-        temp_goals_against <- temp_goals_against + temp_team_played$H_score[i]
+    if (nrow(temp_team_played) == 0){
+      games_played <- 0
+      temp_draws <- 0
+      temp_wins <- 0
+      temp_losses <- 0
+      temp_losses <- sum(temp_team_played$Loser == team)
+      temp_points <- (3*temp_wins) + (temp_draws)
+      
+      temp_goals_for <- 0
+      temp_goals_against <- 0
+      temp_goal_diff <- temp_goals_for - temp_goals_against
+    } else {
+      games_played <- nrow(temp_team_played)
+      temp_draws <- sum(temp_team_played$Draw)
+      temp_wins <- sum(temp_team_played$Winner == team)
+      temp_losses <- sum(temp_team_played$Loser == team)
+      temp_points <- (3*temp_wins) + (temp_draws)
+      
+      temp_goals_for <- 0
+      temp_goals_against <- 0
+      for (i in 1:nrow(temp_team_played)) {
+        if (temp_team_played$Home[i] == team) {
+          temp_goals_for <- temp_goals_for + temp_team_played$H_score[i]
+          temp_goals_against <- temp_goals_against + temp_team_played$A_score[i]
+        } else {
+          temp_goals_for <- temp_goals_for + temp_team_played$A_score[i]
+          temp_goals_against <- temp_goals_against + temp_team_played$H_score[i]
+        }
       }
+      temp_goal_diff <- temp_goals_for - temp_goals_against
     }
-    temp_goal_diff <- temp_goals_for - temp_goals_against
     Team[counter] <- team
     GP[counter] <- games_played
     W[counter] <- temp_wins
