@@ -40,7 +40,12 @@ if (matchdays == 0) {
   previous_MD <- matchdays -1
   for (j in 1:8) {
     current_team <- current_table$Team[j]
-    current_table$Prev[j] <- positions[[current_team]][previous_MD]
+    if (previous_MD != 0) {
+      current_table$Prev[j] <- positions[[current_team]][previous_MD]
+    } else {
+      current_table$Prev[j] <- current_table$Pos[j] 
+    }
+    
     
   }
   current_table$Change <- current_table$Prev - current_table$Pos
