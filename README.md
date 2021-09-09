@@ -1,4 +1,9 @@
 # WCQ_Concacaf
+
+![test](current_table_output/WCQ_table.png)
+![test](weekly_analysis/position_by_game.png)
+![test](weekly_analysis/top3_chance_by_game.png)
+
 A repo to keep track of and predict world cup qualification for concacaf teams
 
 Enter the scores for each team in 'scores.xlsx' and then ensure that the correct 'xlsx' file is referenced in 'workspace_setup.R'
