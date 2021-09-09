@@ -1,6 +1,6 @@
 #import each matchweek table
 matchweek_tables <- list()
-matchweek_files <- list.files(path = "current_table_output/")
+matchweek_files <- list.files(path = "current_table_output/", pattern = ".*.csv")
 
 #save each to a different index in the list
 for (i in 1:length(matchweek_files)) {
@@ -193,10 +193,6 @@ GA_plot <- ggplot(data = weekly_table, aes(x = matchday, y = GA)) +
 png("weekly_analysis/goals_against_by_game.png", width = 1200, height = 700)
 show(GA_plot)
 dev.off()
-
-#run the by team weekly analysis
-source("team_weekly_analysis.R")
-source("create_facet_grid_team_pdf.R")
 
 
 

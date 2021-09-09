@@ -1,3 +1,5 @@
+setwd("~/Personal_projects/WCQ_Concacaf")
+
 source("workspace_setup.R")
 source("functions.R")
 source("rankings2.R")
