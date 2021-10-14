@@ -6,7 +6,7 @@
 ![test](weekly_analysis/points_by_game.png)
 ![test](weekly_analysis/goal_differential_by_game.png)
 ![test](weekly_analysis/goals_scored_by_game.png)
-![test](weekly_analysis/fourth_Chance_by_game.png)
+![test](weekly_analysis/fourth_chance_by_game.png)
 
 A repo to keep track of and predict world cup qualification for concacaf teams
 
