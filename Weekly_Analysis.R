@@ -195,4 +195,23 @@ show(GA_plot)
 dev.off()
 
 
+fourth_plot <- ggplot(data = weekly_table, aes(x = matchday, y = fourth....)) +
+  geom_line(aes(color = color), size = 1.5) +
+  scale_y_continuous(breaks = seq(0,100,10), limits = c(0,100))+
+  scale_color_identity(guide = "legend",
+                       labels = current_team_order) +
+  theme_bw() +
+  theme(legend.title = element_blank(),
+        legend.position = "right", 
+        panel.grid = element_blank(),
+        legend.text = element_text(size = 20),
+        axis.text = element_text(size = 20),
+        axis.title = element_text(size = 20)) +
+  scale_x_continuous(breaks = function(x) seq(ceiling(x[1]), floor(x[2]), by = 1)) +
+  labs(x = "Game", y = "Chance to finish fourth (%)", title = "2021-2022 WCQ fourth place (%)") +
+  geom_point(aes(fill = color), size = 3, shape = 21, stroke = 0.5) +
+  scale_fill_identity()
 
+png("weekly_analysis/fourth_chance_by_game.png", width = 1200, height = 700)
+show(fourth_plot)
+dev.off()
