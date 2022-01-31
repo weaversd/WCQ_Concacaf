@@ -5,7 +5,8 @@ matchweek_files <- list.files(path = "current_table_output/", pattern = ".*.csv"
 #save each to a different index in the list
 for (i in 1:length(matchweek_files)) {
   matchweek_tables[[i]]<- read.csv(paste0("current_table_output/", matchweek_files[i]))
-  matchweek_tables[[i]]$matchday <- i
+  matchday_str <- as.numeric(str_extract(matchweek_files[i], "\\d+")) ##multiple digits
+  matchweek_tables[[i]]$matchday <- matchday_str
 }
 
 #combine into one df
