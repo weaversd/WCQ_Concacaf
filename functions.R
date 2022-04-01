@@ -164,3 +164,4 @@ print_final <- function(){
   print(paste0("Predictions based on ", sim_seasons_n, " simulated seasons."), quote = F)
   print(paste0("Predictions are based on margin of victory against an average team from The Power Rank, and using a method based on fivethirtyeight's soccer predictions."), quote = F)
 }
+
